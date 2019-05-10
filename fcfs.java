@@ -3,56 +3,56 @@ class fcfs
 { 
 public static void main(String args[]) throws Exception 
 { 
-int n,AT[],BT[],WT[],TAT[]; 
-float AWT=0;
-float ATAT=0;
+int n,A[],B[],W[],T[]; 
+float AW=0;
+float AT=0;
 InputStreamReader isr=new InputStreamReader(System.in); 
 BufferedReader br=new BufferedReader(isr); 
 System.out.println("Enter no of process"); 
 n=Integer.parseInt(br.readLine()); 
-BT=new int[n]; 
-WT=new int[n]; 
-TAT=new int[n]; 
-AT=new int[n]; 
+B=new int[n]; 
+W=new int[n]; 
+T=new int[n]; 
+A=new int[n]; 
 System.out.println("Enter Burst time for each process\n******************************"); 
 for(int i=0;i<n;i++) 
 { 
 System.out.println("Enter BT for process "+(i+1)); 
-BT[i]=Integer.parseInt(br.readLine()); 
+B[i]=Integer.parseInt(br.readLine()); 
 } 
 System.out.println("***********************************************"); 
 for(int i=0;i<n;i++) 
 { 
 System.out.println("Enter AT for process"+(i+1)); 
-AT[i]=Integer.parseInt(br.readLine()); 
+A[i]=Integer.parseInt(br.readLine()); 
 } 
 System.out.println("***********************************************"); 
-WT[0]=0;
+W[0]=0;
 for(int i=1;i<n;i++) 
 { 
-WT[i]=WT[i-1]+BT[i-1]+AT[i-1]; 
-WT[i]=WT[i]-AT[i]; 
+W[i]=W[i-1]+B[i-1]+A[i-1]; 
+W[i]=W[i]-A[i]; 
 } 
 for(int i=0;i<n;i++)
 { 
-TAT[i]=WT[i]+BT[i]; 
-AWT=AWT+WT[i]; 
+T[i]=W[i]+B[i]; 
+AW=AW+W[i]; 
 } 
 System.out.println("  PROCESS   BT      WT      TAT     "); 
 for(int i=0;i<n;i++) 
 {
-System.out.println("    "+ i + "       "+BT[i]+"       "+WT[i]+"       "+TAT[i]);
+System.out.println("    "+ i + "       "+B[i]+"       "+W[i]+"       "+T[i]);
 } 
-AWT=AWT/n; 
+AW=AW/n; 
 System.out.println("***********************************************"); 
-System.out.println("Avg waiting time="+AWT+"\n***********************************************");
+System.out.println("Avg waiting time="+AW+"\n***********************************************");
 for(int i=0;i<n;i++) 
 { 
-TAT[i]=WT[i]+BT[i]; 
-ATAT=ATAT+TAT[i]; 
+T[i]=W[i]+B[i]; 
+AT=AT+T[i]; 
 }
-ATAT=ATAT/n; 
+AT=AT/n; 
 System.out.println("***********************************************"); 
-System.out.println("Avg turn around time="+ATAT+"\n***********************************************"); 
+System.out.println("Avg turn around time="+AT+"\n***********************************************"); 
 } 
 }
